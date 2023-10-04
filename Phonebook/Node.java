@@ -1,10 +1,10 @@
 
 public class Node {
-		private Object data;
+		Contact contact;
 		Node next;
 		
-		public Node(Object data) {
-			this.data = data;
+		public Node(Contact data) {
+			contact = data;
 			next = null;
 		}
 		

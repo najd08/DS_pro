@@ -4,8 +4,12 @@
 public class ADT{
 	private Node head;
 	private Node current;
+	
+	ADT(){
+		head= current = null;
+	}
  
-	public void add(Object val) {
+	public void add(Contact val) {
 		Node tmp;
 		if (head==null) {
 			current = head = new Node (val);
@@ -15,6 +19,34 @@ public class ADT{
 			current.next = new Node (val);
 			current = current.next;
 			current.next = tmp;
+		}
+	}
+	
+	public boolean search(Contact c){
+		Node prev = current;
+		current = head;
+		while(current != null) {
+			if(current.contact.equals(c))
+				return true;
+			current = current.next;
+		}
+		current = prev;
+		return false;
+	}
+	
+	public void delete(Contact c) {
+		current = head;
+		Node prev = null;
+		while(current != null) {
+			if(current.contact.equals(c)) {
+				if(prev == null)         //If it was in the beginning of the list
+					head = current.next;
+				else 
+					prev.next = current.next;
+				break;
+			}
+			prev = current;
+			current = current.next;
 		}
 	}
 }
