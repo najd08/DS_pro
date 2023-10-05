@@ -1,5 +1,6 @@
 /*This class will represent a single contact in the phonebook. 
  * It should have fields for the contact’s name, phone number, email address, address, birthday, and notes.*/
+
 public class Contact implements Comparable{
 	
 	private String name,email,address,birthday,notes;
@@ -13,8 +14,10 @@ public class Contact implements Comparable{
 		birthday= birth;
 		notes= note;
 	}
-	public boolean compare(Contact other){   // method to compare between two contacts still not implemented
-		return true;
+	public boolean compare(Contact other){  // method to compare between two contacts still not implemented
+		if(this.equals(other))
+		 return true;
+		return false;
 	}
 
 	public String getName() {
