@@ -3,6 +3,7 @@
  * methods for interacting with the list (e.g., adding, searching, and deleting contacts). 
  * You will also need to schedule events and appointments with contacts.*/
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Phonebook {
@@ -10,7 +11,7 @@ Scanner input = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		
-		
+		System.out.println("Welcome to the Linked Tree Phonebook!");
 
 	}
 	
@@ -28,50 +29,64 @@ Scanner input = new Scanner(System.in);
 	}
 	
 	public boolean existContact(Contact c) {
-		if(clist.search(c)==true)   // if it's found
+		if(clist.searchMatch(c.getName(), c.getEmail())==true)   // if it's found
 			return true;
 		return false;
 	}
+	
     public void display() {
-		
-		System.out.println("Welcome to the Linked Tree Phonebook! Please choose an option:\n"
-				+ "\n"
+    	String name, email,adress,birthday,note;
+    	int pnumber;
+    	boolean flag = true; 
+    	while(flag) { //To repeat showing the menu 
+				System.out.println("choose an option:"
 				+ "1. Add a contact\n"
-				+ "\n"
 				+ "2. Search for a contact\n"
-				+ "\n"
 				+ "3. Delete a contact\n"
-				+ "\n"
 				+ "4. Schedule an event\n"
-				+ "\n"
 				+ "5. Print event details\n"
-				+ "\n"
 				+ "6. Print contacts by first name\n"
-				+ "\n"
 				+ "7. Print all events alphabetically\n"
-				+ "\n"
 				+ "8. Exit\n"
-				+ "\n"
 				+ "Enter your choice:");
+		
+		try {  // Input handling using exceptions
 		 int choice = input.nextInt();
-		 
 		 switch(choice) {
-		 case 1: 
+		 case 1:  // Add contact
 			System.out.println("Enter the contact's name: ");
+			 name = input.nextLine();
 		    System.out.println(" Enter the contact's phone number: ");
+		     pnumber = input.nextInt();
 		    System.out.println("Enter the contact's email address: ");
+		     email = input.nextLine();
 		    System.out.println(" Enter the contact's address: ");
+		     adress = input.nextLine();
 		    System.out.println( "Enter the contact's birthday:  ");
+		     birthday = input.nextLine();
 		    System.out.println("Enter any notes for the contact: ");
+		     note = input.nextLine();
+		      Contact c = new Contact(name,pnumber,email,adress,birthday,note);
+		      if( this.existContact(c) != true) //checking if it already exists
+		    	  clist.add(c);
+		      else
+		    	  System.out.println("Contact ");
+		      break;
 		 case 2:
 		 case 3:
 		 case 4:
 		 case 5:
 		 case 7:
-		 case 8:
-		  
+		 case 8: // if user wants to exit
+			 flag = false; //to break the loop
+			 System.out.println("Goodbye!");
+		 } // End switch
+		 }catch(InputMismatchException e) {
+			 System.out.println("Please enter a number!");
+			 input.nextLine();
 		 }
-	}
+		}// end while loop 
+    	}
 	
 	
 

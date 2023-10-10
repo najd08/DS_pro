@@ -14,8 +14,8 @@ public class Contact implements Comparable{
 		birthday= birth;
 		notes= note;
 	}
-	public boolean compareTo(Contact other){  // method to compare between two contacts still not implemented
-		if(this.equals(other))
+	public boolean compareTo(Contact other){  // method to compare between two contacts
+		if(this.name.equals(other.name))
 		 return true;
 		return false;
 	}
