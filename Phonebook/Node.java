@@ -1,5 +1,5 @@
 
-public class Node {
+public class Node <Contact>{
 		Contact contact;
 		Node next;
 		
@@ -8,8 +8,5 @@ public class Node {
 			next = null;
 		}
 		
-		public void setNext(Node nextp) {
-			next = nextp;
-		}
 	}
 
