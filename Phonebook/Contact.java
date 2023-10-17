@@ -1,10 +1,10 @@
 /*This class will represent a single contact in the phonebook. 
  * It should have fields for the contact’s name, phone number, email address, address, birthday, and notes.*/
 
-public class Contact implements Comparable{
+public class Contact implements Comparable<Contact>{
 	
 	private String name,number,email,address,birthday,notes;
-	
+    public LinkedList<Event> cEvent;
 	
 	public Contact() {
 	}
@@ -16,12 +16,26 @@ public class Contact implements Comparable{
 		address= cAddress;
 		birthday= cBirthday;
 		notes= cNotes;
+		cEvent =  new LinkedList<Event>();
 	}
-	public boolean compareTo(Contact other){  // method to compare between two contacts
-		if(this.name.equals(other.name))
-		 return true;
-		return false;
+	public int compareTo(Contact other){  // method to compare between two contacts
+		if(this.name.compareTo(other.name) == 0)
+		  return 0; //They are equal 
+		return 1; 
 	}
+	
+	
+	public boolean removeEvents(String title) {
+        Event eve = new Event();
+        eve.getTitle().equals(title);
+        
+        if(cEvent.search(eve)) {
+        	cEvent.remove(eve);
+         return true;
+        } 
+        return false;
+    }
+
 	public String getName() {
 		return name;
 	}
@@ -47,6 +61,14 @@ public class Contact implements Comparable{
 			} //End else 
 	} //End set Number 
 	
+	public boolean addEvent(Event event) {
+		if(cEvent.search(event)) //Event is already has been added!
+			return false;
+		else
+			cEvent.add(event);
+		return true;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -71,6 +93,8 @@ public class Contact implements Comparable{
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
+
+
 	
 	
 
