@@ -8,7 +8,7 @@ public class ADT{
 	private Node head;
 	private Node current;
 	
-	LinkedList ADT = new LinkedList ();
+	LinkedList ADT = new LinkedList<Contact> ();
 	
 	ADT(){
 		head= current = null;

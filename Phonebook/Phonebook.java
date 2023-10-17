@@ -35,8 +35,8 @@ Scanner input = new Scanner(System.in);
 	}
 	
     public void display() {
-    	String name, email,adress,birthday,note;
-    	int pnumber;
+    	String name, pnumber,email,adress,birthday,note;
+    
     	boolean flag = true; 
     	while(flag) { //To repeat showing the menu 
 				System.out.println("choose an option:"
@@ -54,10 +54,10 @@ Scanner input = new Scanner(System.in);
 		 int choice = input.nextInt();
 		 switch(choice) {
 		 case 1:  // Add contact
-			System.out.println("Enter the contact's name: ");
+			System.out.println("\nEnter the contact's name: ");
 			 name = input.nextLine();
 		    System.out.println(" Enter the contact's phone number: ");
-		     pnumber = input.nextInt();
+		     pnumber = input.nextLine();
 		    System.out.println("Enter the contact's email address: ");
 		     email = input.nextLine();
 		    System.out.println(" Enter the contact's address: ");
@@ -70,13 +70,14 @@ Scanner input = new Scanner(System.in);
 		      if( this.existContact(c) != true) //checking if it already exists
 		    	  clist.add(c);
 		      else
-		    	  System.out.println("Contact ");
+		    	  System.out.println("Contact already exists");
 		      break;
-		 case 2:
-		 case 3:
-		 case 4:
-		 case 5:
-		 case 7:
+		 case 2: //Search a contact
+			 
+		 case 3: //Delete a contact
+		 case 4: //Add event
+		 case 5: //print even details
+		 case 7: //print all events alphabetically
 		 case 8: // if user wants to exit
 			 flag = false; //to break the loop
 			 System.out.println("Goodbye!");

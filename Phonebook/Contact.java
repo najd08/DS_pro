@@ -3,70 +3,77 @@
 
 public class Contact implements Comparable{
 	
-	private String name,email,address,birthday,notes;
-	private int pnumber;
+	private String name,number,email,address,birthday,notes;
 	
-	Contact(String n,int number,String em,String addr,String birth, String note){
-		name= n;
-		pnumber= number;
-		email= em;
-		address= addr;
-		birthday= birth;
-		notes= note;
+	
+	public Contact() {
+	}
+	
+	Contact(String cName,String cNumber,String cEmail,String cAddress,String cBirthday, String cNotes){
+		name= cName;
+		setNumber(cNumber);
+		email= cEmail;
+		address= cAddress;
+		birthday= cBirthday;
+		notes= cNotes;
 	}
 	public boolean compareTo(Contact other){  // method to compare between two contacts
 		if(this.name.equals(other.name))
 		 return true;
 		return false;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	public String getNumber() {
+		return number;
+	}
+	
+	public void setNumber(String number) {  //Simple validation for the number since it's stored in a string
+		
+		if(number.length()<10)   
+			throw new IllegalArgumentException("Number must contain 10 digits!");
+		
+		else {
+			for(int i = 0; i < number.length(); i++) {      //To make sure that the entered input is all numbers
+				if(!Character.isAlphabetic(number.charAt(i)))
+					continue;
+				throw new IllegalArgumentException("Phone numbeer can only have numbers!");
+		} //End for loop
+			this.number = number;
+			} //End else 
+	} //End set Number 
+	
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public String getAddress() {
 		return address;
 	}
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 	public String getBirthday() {
 		return birthday;
 	}
-
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-
 	public String getNotes() {
 		return notes;
 	}
-
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
+	
+	
 
-	public int getPnumber() {
-		return pnumber;
-	}
-
-	public void setPnumber(int pnumber) {
-		this.pnumber = pnumber;
-	}
 	
 
 }

@@ -1,5 +1,5 @@
 
-public class Node <Contact>{
+public class Node{
 		Contact contact;
 		Node next;
 		
